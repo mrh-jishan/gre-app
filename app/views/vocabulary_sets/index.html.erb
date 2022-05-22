@@ -2,7 +2,7 @@
 
 <h1>Vocabulary Sets</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Study plan</th>
@@ -19,9 +19,9 @@
       <td><%= vocabulary_set.set_name %></td>
       <td><%= vocabulary_set.is_completed %></td>
       <td><%= vocabulary_set.vocabularies_count %></td>
-      <td><%= link_to 'Show', [@study_plan, vocabulary_set] %></td>
-      <td><%= link_to 'Edit', edit_study_plan_vocabulary_set_path(@study_plan, vocabulary_set) %></td>
-      <td><%= link_to 'Destroy', [@study_plan, vocabulary_set], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Show', [@study_plan, vocabulary_set], :class => "btn btn-sm btn-info" %></td>
+      <td><%= link_to 'Edit', edit_study_plan_vocabulary_set_path(@study_plan, vocabulary_set), :class => "btn btn-sm btn-info" %></td>
+      <td><%= link_to 'Destroy', [@study_plan, vocabulary_set], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-sm btn-info" %></td>
     </tr>
   <% end %>
   </tbody>
@@ -29,7 +29,7 @@
 
 <br>
 
-<%= link_to 'New Vocabulary Set', new_study_plan_vocabulary_set_path %>
-<%= link_to 'Study Plan', study_plans_path %>
-<%= link_to 'Quiz', study_plan_quizzes_path(@study_plan) %>
-<td><%= link_to 'Vocabularies', vocabularies_path %></td>
+<%= link_to 'New Vocabulary Set', new_study_plan_vocabulary_set_path, :class => "btn btn-sm btn-info" %>
+<%= link_to 'Study Plan', study_plans_path, :class => "btn btn-sm btn-info" %>
+<%= link_to 'Quiz', study_plan_quizzes_path(@study_plan), :class => "btn btn-sm btn-info" %>
+<td><%= link_to 'Vocabularies', vocabularies_path, :class => "btn btn-sm btn-info" %></td>

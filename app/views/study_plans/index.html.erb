@@ -2,12 +2,12 @@
 
 <h1>Study Plans</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>User</th>
     <th>Plan name</th>
-    <th colspan="4"></th>
+    <th colspan="4">Action</th>
   </tr>
   </thead>
 
@@ -16,11 +16,12 @@
     <tr>
       <td><%= study_plan.user_id %></td>
       <td><%= study_plan.plan_name %></td>
-      <td><%= link_to 'Show', study_plan %></td>
-      <td><%= link_to 'Edit', edit_study_plan_path(study_plan) %></td>
-      <td><%= link_to 'Vocabulary Sets', study_plan_vocabulary_sets_path(study_plan) %></td>
-      <td><%= link_to 'Quiz', study_plan_quizzes_path(study_plan) %></td>
-      <td><%= link_to 'Destroy', study_plan, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+
+      <td><%= link_to 'Show', study_plan, :class => "btn btn-sm btn-info" %></td>
+      <td><%= link_to 'Edit', edit_study_plan_path(study_plan), :class => "btn btn-sm btn-info" %></td>
+      <td><%= link_to 'Vocabulary Sets', study_plan_vocabulary_sets_path(study_plan), :class => "btn btn-sm btn-success" %></td>
+      <td><%= link_to 'Quiz', study_plan_quizzes_path(study_plan), :class => "btn btn-sm btn-info" %></td>
+      <td><%= link_to 'Destroy', study_plan, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-sm btn-info" %></td>
     </tr>
   <% end %>
   </tbody>

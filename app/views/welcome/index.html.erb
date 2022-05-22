@@ -1,13 +1,10 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-
 <% if @user %>
   Logged in as: <%= @user.username %><br>
-  <%= link_to 'Edit Password', edit_password_path %>
-  <%= link_to 'Study Plan', study_plans_path %>
-  <%= button_to 'Logout', logout_path, method: :delete %>
+  <%= link_to 'Edit Password', edit_password_path, :class => "btn btn-default" %>
+  <%= link_to 'Study Plan', study_plans_path, :class => "btn btn-primary" %>
+  <%= button_to 'Logout', logout_path, method: :delete, :class => "btn btn-danger" %>
 <% else %>
-  <%= link_to 'Sign Up', sign_up_path %>
+  <%= link_to 'Sign Up', sign_up_path, class: "btn btn-default" %>
   or
-  <%= link_to 'Login', sign_in_path %>
+  <%= link_to 'Login', sign_in_path, class: "btn btn-primary" %>
 <% end %>

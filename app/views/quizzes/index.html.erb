@@ -2,7 +2,7 @@
 
 <h1>Vocabulary Sets</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>ID</th>
@@ -34,6 +34,4 @@
 
 <br>
 
-<%#= link_to 'New Vocabulary Set', new_study_plan_vocabulary_set_path %>
-<%#= link_to 'Study Plan', study_plans_path %>
-<td><%= link_to 'Study Plan Set', study_plan_vocabulary_sets_path(@study_plan) %></td>
+<td><%= link_to 'Study Plan Set', study_plan_vocabulary_sets_path(@study_plan), :class => "btn btn-sm btn-info" %></td>

@@ -9,8 +9,8 @@
     <%= f.password_field :password, id: 'password' %>
   </p>
   <p>
-    <%= f.submit 'Log In' %>
+    <%= f.submit 'Log In', :class => "btn btn-primary" %>
   </p>
 <% end %>
 
-<%= link_to 'Sign Up', sign_up_path %>
+<p>Don't you have an account? <%= link_to 'Register', sign_up_path %></p>

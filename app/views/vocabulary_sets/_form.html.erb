@@ -11,19 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :set_name %>
-    <%= form.text_field :set_name %>
+    <%= form.text_field :set_name, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :is_completed %>
     <%= form.check_box :is_completed %>
   </div>
 
-  <%= form.collection_check_boxes :vocabulary_ids, @vocabularies, :id, :base_word %>
+  <div class="form-group">
+    <%= form.collection_check_boxes(:vocabulary_ids, @vocabularies, :id, :base_word) do |b| %>
+      <%= b.label(class: "checkbox") do %>
+        <%= b.check_box(class: "checkbox") %>
+        <%= b.object.base_word %>
+      <% end %>
+    <% end %>
+  </div>
+
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-info" %>
   </div>
 <% end %>
