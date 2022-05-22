@@ -56,7 +56,6 @@ class VocabularySetsController < ApplicationController
   # DELETE /vocabulary_sets/1 or /vocabulary_sets/1.json
   def destroy
     @vocabulary_set.destroy
-
     respond_to do |format|
       format.html { redirect_to study_plan_vocabulary_sets_url(@study_plan), notice: "Vocabulary set was successfully destroyed." }
       format.json { head :no_content }
@@ -73,7 +72,6 @@ class VocabularySetsController < ApplicationController
     @study_plan = @user.study_plans.find(params[:study_plan_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_vocabulary_set
     @vocabulary_set = @study_plan.vocabulary_sets.find(params[:id])
   end

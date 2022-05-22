@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post 'sign_in', to: 'sessions#create'
       resources :study_plans, only: [:index] do
         resources :quizzes, only: [:index]
-        resources :vocabulary_sets, only: [:index]
+        resources :vocabulary_sets, only: [:index, :update]
       end
       resources :vocabularies, only: [:index]
     end
