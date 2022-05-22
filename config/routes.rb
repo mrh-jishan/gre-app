@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'sign_up', to: 'registrations#create'
       post 'sign_in', to: 'sessions#create'
-      scope ":study_plans" do
+      resources :study_plans, only: [:index] do
         resources :quizzes, only: [:index]
+        resources :vocabulary_sets, only: [:index]
       end
+      resources :vocabularies, only: [:index]
     end
   end
 
