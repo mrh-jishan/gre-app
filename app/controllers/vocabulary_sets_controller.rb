@@ -1,10 +1,13 @@
 class VocabularySetsController < ApplicationController
+  before_action :set_vocabularies, only: %i[new edit]
   before_action :set_study_plan
   before_action :set_vocabulary_set, only: %i[ show edit update destroy ]
 
   # GET /vocabulary_sets or /vocabulary_sets.json
   def index
-    @vocabulary_sets = @study_plan.vocabulary_sets.all
+    @vocabulary_sets = @study_plan.vocabulary_sets.left_joins(:vocabularies)
+                           .select("vocabulary_sets.id,vocabulary_sets.study_plan_id,vocabulary_sets.is_completed, vocabulary_sets.set_name, count(vocabularies.id) as vocabularies_count")
+                           .group("vocabulary_sets.id")
   end
 
   # GET /vocabulary_sets/1 or /vocabulary_sets/1.json
@@ -13,9 +16,7 @@ class VocabularySetsController < ApplicationController
 
   # GET /vocabulary_sets/new
   def new
-    @vocabularies = Vocabulary.all
     @vocabulary_set = @study_plan.vocabulary_sets.build
-
   end
 
   # GET /vocabulary_sets/1/edit
@@ -62,6 +63,10 @@ class VocabularySetsController < ApplicationController
 
   private
 
+  def set_vocabularies
+    @vocabularies = Vocabulary.all
+  end
+
   def set_study_plan
     @study_plan = @user.study_plans.find(params[:study_plan_id])
   end
@@ -73,6 +78,6 @@ class VocabularySetsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vocabulary_set_params
-    params.require(:vocabulary_set).permit(:set_name, { vocabulary_ids: [] } )
+    params.require(:vocabulary_set).permit(:set_name, :is_completed, {vocabulary_ids: []})
   end
 end

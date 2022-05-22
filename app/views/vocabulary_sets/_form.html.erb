@@ -16,6 +16,11 @@
     <%= form.text_field :set_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :is_completed %>
+    <%= form.check_box :is_completed %>
+  </div>
+
   <%= form.collection_check_boxes :vocabulary_ids, @vocabularies, :id, :base_word %>
 
   <div class="actions">

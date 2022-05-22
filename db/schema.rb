@@ -14,18 +14,18 @@ ActiveRecord::Schema.define(version: 2022_05_21_025956) do
 
   create_table "study_plans", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "plan_name"
+    t.string "plan_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_study_plans_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username", limit: 30
-    t.string "password_digest"
-    t.string "auth_token"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "username", limit: 30, null: false
+    t.string "password_digest", null: false
+    t.string "auth_token", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_025956) do
   end
 
   create_table "vocabularies", force: :cascade do |t|
-    t.string "base_word"
-    t.string "translation"
+    t.string "base_word", null: false
+    t.string "translation", null: false
     t.string "synonym"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_025956) do
 
   create_table "vocabulary_sets", force: :cascade do |t|
     t.integer "study_plan_id", null: false
-    t.string "set_name"
+    t.string "set_name", null: false
+    t.boolean "is_completed", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["study_plan_id"], name: "index_vocabulary_sets_on_study_plan_id"

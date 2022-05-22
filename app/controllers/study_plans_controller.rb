@@ -1,4 +1,5 @@
 class StudyPlansController < ApplicationController
+  before_action :require_user_logged_in!
   before_action :set_study_plan, only: %i[ show edit update destroy ]
 
   # GET /study_plans or /study_plans.json

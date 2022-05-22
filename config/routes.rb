@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   get 'password', to: 'passwords#edit', as: 'edit_password'
   patch 'password', to: 'passwords#update'
 
+  resources :vocabularies
+
   resources :study_plans do
-    resources :vocabulary_sets do
-      resources :vocabularies
-      resources :quizzes, only: [:create, :index, :show]
-      resources :studies, only: [:create, :index, :show]
-    end
+    resources :quizzes, only: [:create, :index, :show]
+    resources :studies, only: [:create, :index, :show]
+    resources :vocabulary_sets
   end
 end

@@ -4,4 +4,6 @@ class VocabularySet < ApplicationRecord
   has_many :vocabularies, :through => :vocabulary_maps
 
   accepts_nested_attributes_for :vocabulary_maps, allow_destroy: true, reject_if: :all_blank
+
+  # scope :quizzes, -> { joins(:vocabularies).includes(:vocabularies).where("vocabulary_sets.is_completed = ?", true) }
 end

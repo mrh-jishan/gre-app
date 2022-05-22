@@ -21,9 +21,9 @@
       <td><%= vocabulary.translation %></td>
       <td><%= vocabulary.synonym %></td>
       <td><%= vocabulary.description %></td>
-      <td><%= link_to 'Show', [@study_plan, @vocabulary_set, vocabulary] %></td>
-      <td><%= link_to 'Edit', edit_study_plan_vocabulary_set_vocabulary_path(@study_plan, @vocabulary_set, vocabulary) %></td>
-      <td><%= link_to 'Destroy', [@study_plan, @vocabulary_set, vocabulary], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Show', vocabulary %></td>
+      <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
+      <td><%= link_to 'Destroy', vocabulary, method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>
@@ -31,6 +31,6 @@
 
 <br>
 
-<%= link_to 'New Vocabulary', new_study_plan_vocabulary_set_vocabulary_path %>
+<%= link_to 'New Vocabulary', new_vocabulary_path %>
+<%= link_to 'Home', root_path %>
 
-<%= link_to 'Vocabulary Sets', study_plan_vocabulary_sets_path %>

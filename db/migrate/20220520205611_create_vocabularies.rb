@@ -1,8 +1,8 @@
 class CreateVocabularies < ActiveRecord::Migration[6.1]
   def change
     create_table :vocabularies do |t|
-      t.string :base_word
-      t.string :translation
+      t.string :base_word, null: false
+      t.string :translation, null: false
       t.string :synonym
       t.text :description
 

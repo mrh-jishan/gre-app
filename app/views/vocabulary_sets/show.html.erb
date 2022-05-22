@@ -10,5 +10,27 @@
   <%= @vocabulary_set.set_name %>
 </p>
 
+<table>
+  <thead>
+  <tr>
+    <th>Base Word</th>
+    <th>Translation</th>
+    <th>synonym</th>
+    <th>description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @vocabulary_set.vocabularies.each do |vocabulary| %>
+    <tr>
+      <td><%= vocabulary.base_word %></td>
+      <td><%= vocabulary.translation %></td>
+      <td><%= vocabulary.synonym %></td>
+      <td><%= vocabulary.description %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_study_plan_vocabulary_set_path(@study_plan,@vocabulary_set) %> |
 <%= link_to 'Back', study_plan_vocabulary_sets_path(@study_plan) %>

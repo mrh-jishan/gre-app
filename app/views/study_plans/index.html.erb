@@ -19,6 +19,8 @@
         <td><%= link_to 'Show', study_plan %></td>
         <td><%= link_to 'Edit', edit_study_plan_path(study_plan) %></td>
         <td><%= link_to 'Vocabulary Sets', study_plan_vocabulary_sets_path(study_plan) %></td>
+        <td><%= link_to 'Quiz', study_plan_quizzes_path(study_plan) %></td>
+        <td><%= link_to 'Study', study_plan_studies_path(study_plan) %></td>
         <td><%= link_to 'Destroy', study_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,3 +30,4 @@
 <br>
 
 <%= link_to 'New Study Plan', new_study_plan_path %>
+<%= link_to 'Home', root_path %>
