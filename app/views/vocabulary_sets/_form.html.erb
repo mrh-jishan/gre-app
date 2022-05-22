@@ -1,0 +1,22 @@
+<%= form_with(model: [@study_plan, @vocabulary_set]) do |form| %>
+  <% if vocabulary_set.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vocabulary_set.errors.count, "error") %> prohibited this vocabulary_set from being saved:</h2>
+
+      <ul>
+        <% vocabulary_set.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :set_name %>
+    <%= form.text_field :set_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Base word:</strong>
+  <%= @vocabulary.base_word %>
+</p>
+
+<p>
+  <strong>Translation:</strong>
+  <%= @vocabulary.translation %>
+</p>
+
+<p>
+  <strong>Synonym:</strong>
+  <%= @vocabulary.synonym %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vocabulary.description %>
+</p>
+
+<%= link_to 'Edit', edit_study_plan_vocabulary_set_vocabulary_path(@study_plan, @vocabulary_set,@vocabulary) %> |
+<%= link_to 'Back', study_plan_vocabulary_set_vocabularies_path(@study_plan, @vocabulary_set) %>

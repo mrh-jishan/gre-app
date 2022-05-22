@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vocabulary_sets: one
+  base_word: MyString
+  translation: MyString
+  synonym: MyString
+  description: MyText
+
+two:
+  vocabulary_sets: two
+  base_word: MyString
+  translation: MyString
+  synonym: MyString
+  description: MyText

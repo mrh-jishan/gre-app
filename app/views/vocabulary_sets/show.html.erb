@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Study plan:</strong>
+  <%= @vocabulary_set.study_plan_id %>
+</p>
+
+<p>
+  <strong>Set name:</strong>
+  <%= @vocabulary_set.set_name %>
+</p>
+
+<%= link_to 'Edit', edit_study_plan_vocabulary_set_path(@study_plan,@vocabulary_set) %> |
+<%= link_to 'Back', study_plan_vocabulary_sets_path(@study_plan) %>
