@@ -1,4 +1,4 @@
-<%= form_with(model: [@study_plan, @vocabulary_set]) do |form| %>
+<%= form_with(model: [@study_plan, @vocabulary_set], local: true) do |form| %>
   <% if vocabulary_set.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vocabulary_set.errors.count, "error") %> prohibited this vocabulary_set from being saved:</h2>
@@ -15,6 +15,8 @@
     <%= form.label :set_name %>
     <%= form.text_field :set_name %>
   </div>
+
+  <%= form.collection_check_boxes :vocabulary_ids, @vocabularies, :id, :base_word %>
 
   <div class="actions">
     <%= form.submit %>

@@ -13,7 +13,9 @@ class VocabularySetsController < ApplicationController
 
   # GET /vocabulary_sets/new
   def new
-    @vocabulary_set = @study_plan.vocabulary_sets.new
+    @vocabularies = Vocabulary.all
+    @vocabulary_set = @study_plan.vocabulary_sets.build
+
   end
 
   # GET /vocabulary_sets/1/edit
@@ -22,7 +24,7 @@ class VocabularySetsController < ApplicationController
 
   # POST /vocabulary_sets or /vocabulary_sets.json
   def create
-    @vocabulary_set = @study_plan.vocabulary_sets.new(vocabulary_set_params)
+    @vocabulary_set = @study_plan.vocabulary_sets.build(vocabulary_set_params)
 
     respond_to do |format|
       if @vocabulary_set.save
@@ -71,6 +73,6 @@ class VocabularySetsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vocabulary_set_params
-    params.require(:vocabulary_set).permit(:set_name)
+    params.require(:vocabulary_set).permit(:set_name, { vocabulary_ids: [] } )
   end
 end
