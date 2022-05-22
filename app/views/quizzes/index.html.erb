@@ -5,6 +5,7 @@
 <table>
   <thead>
   <tr>
+    <th>ID</th>
     <th>Study plan</th>
     <th>Set name</th>
     <th>Completed</th>
@@ -18,6 +19,7 @@
   <tbody>
   <% @quizzes.each do |quize| %>
     <tr>
+      <td><%= quize.id %></td>
       <td><%= quize.study_plan_id %></td>
       <td><%= quize.set_name %></td>
       <td><%= quize.is_completed %></td>

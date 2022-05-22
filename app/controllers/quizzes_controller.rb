@@ -1,17 +1,13 @@
 class QuizzesController < ApplicationController
+  before_action :require_user_logged_in!
+
   before_action :set_study_plan
-
-  def create
-  end
-
-  def show
-  end
 
   def index
     @quizzes = @study_plan.vocabulary_sets
                    .left_joins(:vocabularies)
                    .where("vocabulary_sets.is_completed = ?", true)
-                   .select("vocabulary_sets.id as vocab_id,vocabularies.id as vocabularies_id,vocabularies.base_word as base_word,vocabularies.translation as translation,vocabularies.synonym as synonym,vocabularies.description as description, vocabulary_sets.study_plan_id as study_plan_id,vocabulary_sets.set_name as set_name,vocabulary_sets.is_completed as is_completed")
+                   .select("vocabulary_sets.id as vocabulary_id,vocabularies.id as id,vocabularies.base_word as base_word,vocabularies.translation as translation,vocabularies.synonym as synonym,vocabularies.description as description, vocabulary_sets.study_plan_id as study_plan_id,vocabulary_sets.set_name as set_name,vocabulary_sets.is_completed as is_completed")
                    .group("vocabularies.id")
   end
 

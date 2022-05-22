@@ -1,4 +1,6 @@
 class VocabularySetsController < ApplicationController
+  before_action :require_user_logged_in!
+
   before_action :set_vocabularies, only: %i[new edit]
   before_action :set_study_plan
   before_action :set_vocabulary_set, only: %i[ show edit update destroy ]

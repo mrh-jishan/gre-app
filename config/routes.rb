@@ -15,8 +15,7 @@ Rails.application.routes.draw do
   resources :vocabularies
 
   resources :study_plans do
-    resources :quizzes, only: [:create, :index, :show]
-    resources :studies, only: [:create, :index, :show]
+    resources :quizzes, only: [:index]
     resources :vocabulary_sets
   end
 end

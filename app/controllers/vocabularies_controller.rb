@@ -1,4 +1,5 @@
 class VocabulariesController < ApplicationController
+  before_action :require_user_logged_in!
 
   before_action :set_vocabulary, only: %i[ show edit update destroy ]
 
