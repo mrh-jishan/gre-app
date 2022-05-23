@@ -6,8 +6,6 @@
   <thead>
   <tr>
     <th>ID</th>
-    <th>Set name</th>
-    <th>Completed</th>
     <th>Base Word</th>
     <th>Translation</th>
     <th>Synonym</th>
@@ -19,8 +17,6 @@
   <% @quizzes.each do |quize| %>
     <tr>
       <td><%= quize.id %></td>
-      <td><%= quize.set_name %></td>
-      <td><%= quize.is_completed %></td>
       <td><%= quize.base_word %></td>
       <td><%= quize.translation %></td>
       <td><%= quize.synonym %></td>
