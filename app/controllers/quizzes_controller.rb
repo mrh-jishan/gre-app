@@ -7,7 +7,7 @@ class QuizzesController < ApplicationController
     @quizzes = @study_plan.vocabulary_sets
                    .left_joins(:vocabularies)
                    .where("vocabulary_sets.is_completed = ?", true)
-                   .select("vocabularies.id as id,vocabularies.base_word as base_word,vocabularies.translation as translation,vocabularies.synonym as synonym,vocabularies.description as description, vocabulary_sets.study_plan_id as study_plan_id,vocabulary_sets.set_name as set_name,vocabulary_sets.is_completed as is_completed")
+                   .select("vocabularies.id as id,vocabularies.base_word as base_word,vocabularies.translation as translation,vocabularies.synonym as synonym,vocabularies.description as description,vocabulary_sets.set_name as set_name,vocabulary_sets.is_completed as is_completed")
                    .group("vocabularies.id")
   end
 
