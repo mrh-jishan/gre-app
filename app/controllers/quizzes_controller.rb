@@ -6,7 +6,7 @@ class QuizzesController < ApplicationController
   def index
     @quizzes = @study_plan.vocabularies.includes(:vocabulary_sets)
                    .where("vocabulary_sets.is_completed = ?", true)
-                   .group(:id)
+                   .group(:id).order("RANDOM()")
   end
 
   private
