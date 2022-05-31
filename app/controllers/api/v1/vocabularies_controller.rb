@@ -3,7 +3,7 @@ class Api::V1::VocabulariesController < Api::ApiController
 
   def index
     @vocabularies = Vocabulary.all
-    json_response({:vocabularies => @vocabularies}, 200)
+    json_response(@vocabularies, 200)
   end
 
 end
