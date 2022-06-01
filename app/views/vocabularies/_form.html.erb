@@ -11,27 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :base_word %>
-    <%= form.text_field :base_word %>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3">Base Word</span>
+        <%= form.text_field :base_word, :class => "form-control", :placeholder => "Base word" %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3">Translation</span>
+        <%= form.text_field :translation, :class => "form-control", :placeholder => "Translation" %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3">Synonym</span>
+        <%= form.text_field :synonym, :class => "form-control", :placeholder => "Synonym" %>
+
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3">Description</span>
+        <%= form.text_field :description, :class => "form-control", :placeholder => "Description" %>
+
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :translation %>
-    <%= form.text_field :translation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :synonym %>
-    <%= form.text_field :synonym %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions pull-right m-5">
+    <%= form.submit :class => "btn btn-sm btn-primary" %>
   </div>
 <% end %>
