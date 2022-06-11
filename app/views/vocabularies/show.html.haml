@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Base word:
+  = @vocabulary.base_word
+%p
+  %strong Translation:
+  = @vocabulary.translation
+%p
+  %strong Synonym:
+  = @vocabulary.synonym
+%p
+  %strong Description:
+  = @vocabulary.description
+= link_to 'Edit', edit_vocabulary_path(@vocabulary)
+|
+= link_to 'Back', vocabularies_path

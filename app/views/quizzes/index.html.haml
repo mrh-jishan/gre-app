@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Vocabulary Sets
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th Base Word
+      %th Translation
+      %th Synonym
+      %th Description
+  %tbody
+    - @quizzes.each do |quize|
+      %tr
+        %td= quize.id
+        %td= quize.base_word
+        %td= quize.translation
+        %td= quize.synonym
+        %td= quize.description
+%br/
+%td= link_to 'Study Plan Set', study_plan_vocabulary_sets_path(@study_plan), :class => "btn btn-sm btn-info"

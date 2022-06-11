@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @study_plan.user_id
+%p
+  %strong Plan name:
+  = @study_plan.plan_name
+= link_to 'Edit', edit_study_plan_path(@study_plan)
+|
+= link_to 'Back', study_plans_path

@@ -1,0 +1,24 @@
+%p#notice= notice
+%p
+  %strong Study plan:
+  = @vocabulary_set.study_plan_id
+%p
+  %strong Set name:
+  = @vocabulary_set.set_name
+%table.table.table-striped
+  %thead
+    %tr
+      %th Base Word
+      %th Translation
+      %th synonym
+      %th description
+  %tbody
+    - @vocabulary_set.vocabularies.each do |vocabulary|
+      %tr
+        %td= vocabulary.base_word
+        %td= vocabulary.translation
+        %td= vocabulary.synonym
+        %td= vocabulary.description
+= link_to 'Edit', edit_study_plan_vocabulary_set_path(@study_plan,@vocabulary_set)
+|
+= link_to 'Back', study_plan_vocabulary_sets_path(@study_plan)

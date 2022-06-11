@@ -1,0 +1,14 @@
+%h1 Passwords#edit
+%p Find me in app/views/passwords/edit.html.erb
+%h1 Edit Password
+= form_with model: @user, url: edit_password_path do |f|
+  %p
+    = f.label 'password:'
+    %br/
+    = f.password_field :password
+  %p
+    = f.label 'password_confirmation:'
+    %br/
+    = f.password_field :password_confirmation
+  %p
+    = f.submit 'Update'

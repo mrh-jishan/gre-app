@@ -1,0 +1,21 @@
+%p#notice= notice
+%h1 Study Plans
+%table.table.table-striped
+  %thead
+    %tr
+      %th User
+      %th Plan name
+      %th{:colspan => "4"} Action
+  %tbody
+    - @study_plans.each do |study_plan|
+      %tr
+        %td= study_plan.user_id
+        %td= study_plan.plan_name
+        %td= link_to 'Show', study_plan, :class => "btn btn-sm btn-info"
+        %td= link_to 'Edit', edit_study_plan_path(study_plan), :class => "btn btn-sm btn-info"
+        %td= link_to 'Vocabulary Sets', study_plan_vocabulary_sets_path(study_plan), :class => "btn btn-sm btn-success"
+        %td= link_to 'Quiz', study_plan_quizzes_path(study_plan), :class => "btn btn-sm btn-info"
+        %td= link_to 'Destroy', study_plan, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-sm btn-info"
+%br/
+= link_to 'New Study Plan', new_study_plan_path
+= link_to 'Home', root_path

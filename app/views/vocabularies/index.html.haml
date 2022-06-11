@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Vocabularies
+%table.table.table-striped
+  %thead
+    %tr
+      %th Vocabulary sets
+      %th Base word
+      %th Translation
+      %th Synonym
+      %th Description
+      %th{:colspan => "3"}
+  %tbody
+    - @vocabularies.each do |vocabulary|
+      %tr
+        %td= vocabulary.base_word
+        %td= vocabulary.translation
+        %td= vocabulary.synonym
+        %td= vocabulary.description
+        %td= link_to 'Show', vocabulary
+        %td= link_to 'Edit', edit_vocabulary_path(vocabulary)
+        %td= link_to 'Destroy', vocabulary, method: :delete, data: {confirm: 'Are you sure?'}
+%br/
+= link_to 'New Vocabulary', new_vocabulary_path, :class => "btn btn-sm btn-success"
+= link_to 'Home', root_path, :class => "btn btn-sm btn-info"
