@@ -23,39 +23,26 @@ class StudyPlansController < ApplicationController
   # POST /study_plans or /study_plans.json
   def create
     @study_plan = @user.study_plans.new(study_plan_params)
-
-    respond_to do |format|
-      if @study_plan.save
-        format.html { redirect_to study_plan_url(@study_plan), notice: "Study plan was successfully created." }
-        format.json { render :show, status: :created, location: @study_plan }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
+    if @study_plan.save
+      redirect_to study_plan_url(@study_plan), notice: "Study plan was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /study_plans/1 or /study_plans/1.json
   def update
-    respond_to do |format|
-      if @study_plan.update(study_plan_params)
-        format.html { redirect_to study_plan_url(@study_plan), notice: "Study plan was successfully updated." }
-        format.json { render :show, status: :ok, location: @study_plan }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @study_plan.errors, status: :unprocessable_entity }
-      end
+    if @study_plan.update(study_plan_params)
+      redirect_to study_plan_url(@study_plan), notice: "Study plan was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /study_plans/1 or /study_plans/1.json
   def destroy
     @study_plan.destroy
-
-    respond_to do |format|
-      format.html { redirect_to study_plans_url, notice: "Study plan was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to study_plans_url, notice: "Study plan was successfully destroyed."
   end
 
   private

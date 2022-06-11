@@ -8,8 +8,8 @@ class VocabularySetsController < ApplicationController
   # GET /vocabulary_sets or /vocabulary_sets.json
   def index
     @vocabulary_sets = @study_plan.vocabulary_sets.left_joins(:vocabularies)
-                           .select("vocabulary_sets.id,vocabulary_sets.study_plan_id,vocabulary_sets.is_completed, vocabulary_sets.set_name, count(vocabularies.id) as vocabularies_count")
-                           .group("vocabulary_sets.id")
+                                  .select("vocabulary_sets.id,vocabulary_sets.study_plan_id,vocabulary_sets.is_completed, vocabulary_sets.set_name, count(vocabularies.id) as vocabularies_count")
+                                  .group("vocabulary_sets.id")
   end
 
   # GET /vocabulary_sets/1 or /vocabulary_sets/1.json
@@ -28,38 +28,27 @@ class VocabularySetsController < ApplicationController
   # POST /vocabulary_sets or /vocabulary_sets.json
   def create
     @vocabulary_set = @study_plan.vocabulary_sets.build(vocabulary_set_params)
-
-    respond_to do |format|
-      if @vocabulary_set.save
-        format.html { redirect_to study_plan_vocabulary_sets_url(@study_plan), notice: "Vocabulary set was successfully created." }
-        format.json { render :show, status: :created, location: @vocabulary_set }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vocabulary_set.errors, status: :unprocessable_entity }
-      end
+    if @vocabulary_set.save
+      redirect_to study_plan_vocabulary_sets_url(@study_plan), notice: "Vocabulary set was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /vocabulary_sets/1 or /vocabulary_sets/1.json
   def update
-    respond_to do |format|
-      if @vocabulary_set.update(vocabulary_set_params)
-        format.html { redirect_to study_plan_vocabulary_set_url(@study_plan, @vocabulary_set), notice: "Vocabulary set was successfully updated." }
-        format.json { render :show, status: :ok, location: @vocabulary_set }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @vocabulary_set.errors, status: :unprocessable_entity }
-      end
+
+    if @vocabulary_set.update(vocabulary_set_params)
+      redirect_to study_plan_vocabulary_set_url(@study_plan, @vocabulary_set), notice: "Vocabulary set was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /vocabulary_sets/1 or /vocabulary_sets/1.json
   def destroy
     @vocabulary_set.destroy
-    respond_to do |format|
-      format.html { redirect_to study_plan_vocabulary_sets_url(@study_plan), notice: "Vocabulary set was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to study_plan_vocabulary_sets_url(@study_plan), notice: "Vocabulary set was successfully destroyed."
   end
 
   private
@@ -78,6 +67,6 @@ class VocabularySetsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def vocabulary_set_params
-    params.require(:vocabulary_set).permit(:set_name, :is_completed, {vocabulary_ids: []})
+    params.require(:vocabulary_set).permit(:set_name, :is_completed, { vocabulary_ids: [] })
   end
 end

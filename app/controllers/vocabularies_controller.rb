@@ -24,38 +24,26 @@ class VocabulariesController < ApplicationController
   # POST /vocabularies or /vocabularies.json
   def create
     @vocabulary = Vocabulary.new(vocabulary_params)
-    respond_to do |format|
-      if @vocabulary.save
-        format.html { redirect_to vocabularies_url, notice: "Vocabulary was successfully created." }
-        format.json { render :show, status: :created, location: @vocabulary }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
-      end
+    if @vocabulary.save
+      redirect_to vocabularies_url, notice: "Vocabulary was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /vocabularies/1 or /vocabularies/1.json
   def update
-    respond_to do |format|
-      if @vocabulary.update(vocabulary_params)
-        format.html { redirect_to vocabularies_url, notice: "Vocabulary was successfully updated." }
-        format.json { render :show, status: :ok, location: @vocabulary }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
-      end
+    if @vocabulary.update(vocabulary_params)
+      redirect_to vocabularies_url, notice: "Vocabulary was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /vocabularies/1 or /vocabularies/1.json
   def destroy
     @vocabulary.destroy
-
-    respond_to do |format|
-      format.html { redirect_to vocabularies_url, notice: "Vocabulary was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to vocabularies_url, notice: "Vocabulary was successfully destroyed."
   end
 
   private
